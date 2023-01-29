@@ -217,4 +217,226 @@ $(u_1, .., u_n)$ - все $u_i$ - линейные комбинации из $(v
 доказательство - н.у.о. $n = m + 1$, потому что умеем убирать лишнее, индукция по $n$ - база - $n = 2$, $u_1 = a_1v_1, u_2 = a_2v_1$, если есть ноль - то очев зависимо, если нет, то второй выражается через первый
 
 переход $n \rightarrow n + 1$ каждая $u$ выражается через $v$.., пробуем исключить последнюю $v_{n + 1}$, если смогли, тогда по предположению победа, если не смогли $(u_1 = ... + a_{n + 1}v_{n + 1})$ - есть такой - у которого не нуль тогда повычетаем с константами чтобы последнее умерло 
+
+\\
+
+\textbf{Лемма}  $u$ - конечномерное векторное пространсвто $u_1, u_2, .. u_k \in u$ лнз система, тогда $\exists u_{k + 1}, ..., u_n \notin u$ такое что их объединение это базис u.
+
+\textbf{Доказательство:} пусть есть k векторов - если максимально линейно независимы(базис), либо добавим ещё один вектор. Будем добавлять, если их стало n+1, то по лнзлк она линейно зависима. Значит когда добавим ровно до n будет базис.
+\\
+
+\textbf{Следствие леммы:} если $U, V$ - веткорные пространства над $K$(конечномерные), $U \leq V \Rightarrow dim(U) \leq dim(V)$.
+
+\textbf{Доказательство:} $u_1, ..., u_k$ - базис u, дополним до базиса v, знак очевиден так как подпространство.
+
+\textbf{Применение:} $\mathbb{Q}, \alpha$ - алгебраическое, если $\exists f \in \mathbb{Q}[x]: f(\alpha) = 0$
+
+\textbf{Пример:} $\sqrt[7]{3}$ - корень $x^7 - 3 = 0$. 
+\\
+
+\textbf{Теорема} $\alpha$ - алгебраическое, $ p \in Z[x]$, то  $p(\alpha)$ - алгебраическое.
+
+\textbf{Доказательство:} Рассмотрим векторное пространство над $\mathbb{Q}$, получим множество $\{p(\alpha) | p \in Q[x]\}$ - замкнуто относительно сложения и умножения на $\mathbb{Q}$.
+
+Получили векторное пространство (оно конечно мерное), потому что $\exists a_{n - 1}, ..., a_0, \in \mathbb{Q} \ \alpha^n = \sum {a_i \cdot \alpha^{i + 1}}$ Домножим на $\alpha$ - можем выразить $\alpha^j$ через первые n степеней (начиная с 0), получается что размерность пространства ($dim(V_{\alpha}) \leq n)$. 
+
+$\exists p \in \mathbb{Z}[x]$ $1, p(\alpha), ..., p(\alpha)^n \ in V_{\alpha}$ - они линейно зависимы так как их n+1, тогда $\exists q_0, ..., q_n$ - $p(\alpha)$ - это корень многочлена $q_nx^n + ... + q_1x + q_0$
+\\
+
+\textbf{Теорема} Пусть V коненчно мерное векторное пространство над K, тогда $\exists !n : V \cong K^n$. 
+
+\textbf{Доказательство:}
+
+единственность: $n = dim(K^n) = dim(V)$ 
+
+существованеи - пусть $u_1, ..., u_n$ - базис V, рассмотрим $i: K^n \rightarrow V$ $\begin{pmatrix}
+    a_1 \\
+    ... \\
+    a_n
+\end{pmatrix} \rightarrow (a_1v_1 + ... + a_nv_n)$. Это биекция так как $u_1, ..., u_n$ - базис ($\forall u, \exists (a_1, ..., a_n) \ \ u = \sum a_i u_i$.
+\\
+
+\textbf{Обозначение} $\mathrm{U} = \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    ... \\
+    a_n 
+\end{pmatrix} = [u]_{\{u_i\}}$ - столбец координат в базисе $\{ u_i \}$
+\\
+
+\textbf{Пример:} фибоначчиева последовательность - есть базис $(1, 0, 1, 1, 2 ...)$, $(1, 1, 2, 3, ... )$ $(a, b, a + b, ...)$ = $av_1 + b v_2$. Прикольный базис: $(1, \phi, \phi^2, ...)$, $(1, -\frac{1}{\phi}, (-\frac{1}{\phi})^2)$ - если решить в этом базисе, получим формулу Бине).
+\\
+
+\section{Системы линейных уравнений}
+$S:\begin{cases}
+    a_{11}x_1 + ... + a_{1m}x_m = b_1 \\
+    ... \\
+    a_{n1}x_1 + ... + a_{nm}x_m = b_n
+ \end{cases}$ 
+ \\
+ $$A_i = \begin{pmatrix}
+     a_{1i} \\
+     a_{2i} \\
+     ... \\
+     a_{ni}
+ \end{pmatrix} \in K^n, \ \ B = \begin{pmatrix}
+     b_1 \\
+     b_2 \\
+     ... \\
+     b_n
+ \end{pmatrix}$$ Если S имеет решение, то $B \in \langle A_1, ..., A_n \rangle$
+ \\
+ \begin{definition}
+     Однородная слу - B = 0. У неё всегда есть тривиальное решение $x_1 = x_2 = ... = x_n = 0$
+ \end{definition}
+
+ \textbf{Замечание} Если у ослу есть нетривиальное решение, то $A_1, ..., A_n$ - линейно зависимы.
+
+ \textbf{Частный случай:} $m > n$, тогда $A_1, ..., A_{n + 1} \in K^n \Rightarrow$ лз и есть нетривиальное решение.
+
+ \begin{definition}
+     A - абелева группа, $I, J$ - конечные множества, тогда матрица над A это отображение $I \times J \rightarrow A \ | \ (i, j) \rightarrow a_{ij} \in A$
+ \end{definition}
+ Часто $I = \{1, ..., n\}, \ J = \{1, ..., m\}$, в таком случае множество всех матриц записывается как $M_{n,m}(A)$
+\\
+
+Определим сложение (если размеры двух матриц равны $a_{ij} + b_{ij} = (a + b)_{ij}$ - можно проверить всякие коммутативности, ассоциативности. Тогда $M_{n,m}$ - абелева группа.
+\\
+
+Пусть $A = R$ - кольцо, тогда определим умножение матриц:
+\begin{enumerate}
+    \item $M_{1,m} \times M_{m, 1} \rightarrow R$, $$(a_1, ..., a_m) \cdot \begin{pmatrix}
+        b_1 \\
+        ... \\
+        b_n
+    \end{pmatrix} = a_1b_1 + ... a_nb_n$$
+    \item $M_{k,m} \times M_{m, 1} \rightarrow M_{k, 1}$, $$\begin{pmatrix}
+        row_1 \\
+        row_2 \\
+        ... \\
+        row_k
+    \end{pmatrix} \cdot \begin{pmatrix}
+        b_1 \\
+        b_2 \\
+        ... \\
+        b_m
+    \end{pmatrix} = \begin{pmatrix}
+        row_1 \cdot column \\
+        row_2 \cdot column \\
+        ... \\
+        row_3 \cdot column
+    \end{pmatrix} \in M_{k, 1}(R) = R^k$$
+    \item $M_{k,m} \times M_{m, l} \rightarrow M_{k, l}$, $A(c_1 | c_2 | ... | c_l)$, $$c_{ij} = \sum_{s = 1}^m {a_{is}b_{sj}}$$
+\end{enumerate}
+
+СЛУ $A*X = B, \ X = A^{-1}B$ - но обратная матрица есть редко.
+
+\textbf{Свойства матриц:}
+\begin{enumerate}
+    \item $A_{mk} \cdot (B+C)_{kl} = AB + AC$, тоже самое для правоассоциативной $(B+C)_{kl} \cdot A_{mk}  = BA + CA$
+    \item $(AB)C = A(BC)$ - если вообще можно перемножать (см размер).
+\end{enumerate}
+\textbf{Доказательство:} \begin{enumerate}
+    \item \textbb{TODO}
+    \item $$((AB)C)_{ij} = \sum_{s = 1}^m {(AB)_{is}C_{sj}} = \sum_{s = 1}^m {(\sum_{t = 1}^l {A_{it}B_{ts}})C_{sj}}$$
+    $$(A(BC))_{ij} = \sum_{s = 1}^m {A_{is}(BC)_{sj}} = \sum_{s = 1}^m {A_{is}(\sum_{t = 1}^l {B_{st}C_{tj}})}$$ - вроде равны.
+\end{enumerate}
+
+\textbf{Утверждение} $M_{n,n}(R)$ - ассоциаттивное кольцо с 1. 
+
+\textbf{Доказательство:} Умножение определено, ассоциативность, дистрибутивность (абелева группа по сложению), еденица $\begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+\end{pmatrix}.
+$EA = A \ \forall A \in M_{n, m}(R)$.
+Замечание - умножение не коммутативно, обычно просто не сходится по размеру, если сходится, то пример: $$\begin{pmatrix}
+    0 & 1 \\
+    0 & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+    0 & 0 \\
+    1 & 0
+\end{pmatrix} = \begin{pmatrix}
+    1 & 0 \\
+    0 & 0
+\end{pmatrix}$$
+$$\begin{pmatrix}
+    0 & 0 \\
+    1 & 0
+\end{pmatrix} \cdot \begin{pmatrix}
+    0 & 1 \\
+    0 & 0
+\end{pmatrix} = \begin{pmatrix}
+    0 & 0 \\
+    0 & 1
+\end{pmatrix}$$
+\\
+\textbf{Замечание} R = k-поле
+$M_n(k)$ - вп над K. $k(a_{i, j}) = ka_{i, j}$ Самый просто базис - это по одной 1 в каждом "векторе"
+Умножение в $M_n(K)$ достаточно задать на базисе. $E_{ij} \cdot E_{kl} = \begin{cases}
+   E_{il} & j \neq k\\
+   0 & j \neq k
+ \end{cases}$ 
+$V$ - n  мерное пространство $v_1, ..., v_n$ - старый базис, $v_1', ... , v_n'$ - новый базис. $a_1, .., a_n \in k$ $(v_1, ..., v_n) \cdot \begin{pmatrix}
+    a_1 \\
+    a_2\\
+    ... \\
+    a_n
+  \end{pmatrix} = a_1v_1 + ... + a_nv_n$
+  \textbf{Матрица перехода} от $v_i$ к $v_i'$
+  Пусть $x \in V$ $X = [x]_{\{v_i\}}$ Тогда новые координаты это старый координатный столбец умножить на матрицу перехода. 
+  Доказательство: $(u_1', ..., u_n')(CX) = ((u_1', ..., u_n')C)X = (v_1, ..., v_n)X$, чтд
+  \\
+ \textbf{Следствие:} C - матрица перехода $(u_i) \rightarrow (u_i')$, $C'$ - матрица перехода $(u_i') \rightarrow (u_i'')$, тогда $C'C$ - матрица перехода $(u_i) \rightarrow (u_i'')$
+ \textbf{Доказательство:} $\forall$ столбца X $\leftrightarrow \ x \in V$ $CX$ - кординаты в $(u_i')$, $C'(CX)$ кординаты в $(u_i'')$, тогда $C'C$ - матрица перехода.
+ Частный случай - если u = u", тогда $C'  = C^{-1}$
+ \section{Линейные отображения}
+ \textbf{Напоминание:}$ U, V$ - вп над K, $A : U \rightarrow V$ линейно(гомотетия), если $A(u + \alpha v) = A(u) + \alpha A(v) \ \ \forall u, v \in U, \ \forall \alpha \in K$
+\\
+ \textbf{Пример:} $A(x) = x \ \ A(x) = 0$ - линейны
+ \textbf{Пример:} $A: K^n \rightarrow K, \ dim(K) = 1, \ \langle1\rangle = K$ $$A\begin{pmatrix}
+     x_1 \\
+     ... \\
+     x_n
+ \end{pmatrix} = a_1x_1 + ... + a_nx_n$$
+ Более общо: $A \in M_{m, n}, A(x) = Ax$ - линейное отображение $A: K^n \rightarrow K^m$, все линейные отображение - это домножения на матрицу.
+ \\
+ \textbf{Теорема} $(u_1, ..., u_n)$ - базис U, $v_1, ..., v_n \in V$ тогда $\exists ! \alpha: U \rightarrow V: u_i \rightarrow v_i$
+  \textbf{Доказательство:}
+  
+  единственность: пусть $\alpha(u_i) = v_i = B(u_i)$ $$\forall u\in U: u=\sum a_iu_i\Rightarrow A(u)=A(\sum a_iu_i)=\sum a_iA(u_i)=\sum a_iB(u_i)=B(\sum a_iu_i)=B(u)$$
+  
+  Существование: $\forall u = \sum a_i u_i, \ A(u) = \sum a_i v_i$, тогда:
+  
+  $A(\alpha\cdot (\sum a_iu_i)+\sum b_iu_i)=A(\sum(\alpha\cdot a_i+b_i)u_i)=\alpha\cdot \sum a_iv_i+\sum b_iv_i=\alpha \cdot A(\sum a_iu_i)+A(\sum b_iu_i)
+$  \\
+  \begin{definition}
+      $\alpha : U \rightarrow V$ $Ker(A) = \{ u \in U | A(u) = 0\}$ - ядро. Образ - $Im(A) = \{v \in V | \exists u \in U A(u) = v \}$
+  \end{definition} 
+  \textbf{Лемма} $Ker(A)$ - подпространство в $U$, $Im(A)$ - подпространство в $V$.
+  Доказательство: (проверим замкнутость)
+  
+  1) $u, v \in Ker(A) \ A(u) = 0, A(v) = 0$ тогда $A(u + kv) = 0$
+  2) $u = A(x),\ v = A(y)$, тогда $v + u = A(x) + A(y) = A(x + y) \rightarrow x + y \in Im$, $ku = kA(x) = A(kx) \rightarrow kx \in Im$
+\\
+\textbf{Примеры:} \begin{enumerate}
+    \item A(x) = x: $Ker(A) = \{0\},\ Im(A) = V$
+    \item A(x) = 0 $Ker(A) = V,\ Im(A) = \{0\}$
+    \item v - вектор на декартовой плоскости, A(v) - проекция на $Ox$, тогда $Ker(A) = \langle \begin{pmatrix}
+        0 \\
+        1
+    \end{pmatrix} \rangle,\ Im(A) = \langle \begin{pmatrix}
+        1 \\
+        0
+    \end{pmatrix} \rangle$
+\end{enumerate}
+  \textbf{Теорема:} $A: U -> V$ - линейное отображение. $dim(Ker(A))+ dim(Im(A)) = dim(U)$
+\\
+  \textbf{Доказательство:} $dim(ker(A)) = m$ - $u_1, ..., u_m$ - базис ядра, дополним до базиса $U$. Применим линейное отображение $A(u_1), ... A(u_m)$ = 0
+  
+  \textbf{Утверждение:} $A(u_{m+1}), ... A(u_{n})$ - базис образа.
+  
+  \textbf{Докажем утверждение:} $A(u_{m+1}), ... A(u_{n})$ - лнз.
+  Пусть $\alpha_{m + 1} A(u_{m + 1}) + ... + \alpha_{n} A(u_{n}) = 0$, тогда $A(\sum {\alpha_{m + i}u_{m + i}}) = 0 \rightarrow \sum {\alpha_{m + i}u_{m + i}} \in Ker(A)$, $\sum {\alpha_{m + i}u_{m + i}} = \sum {\alpha_{i}u_{i}}$ - вспомнили про базис $Ker$, но тогда $\sum {\alpha_{m + i}u_{m + i}} - \sum {\alpha_{i}u_{i}} = 0$, $\{u_i\}$ - лнз (базис U), тогда все $\alpha_i = 0$, получили базис образа, чтд.
 \end{document}
